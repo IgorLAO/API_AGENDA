@@ -47,10 +47,17 @@ export async function Alterar ( id, contato){
         DS_TELEFONE = ?,
         DS_EMAIL = ?,
         BT_FAVORITO = ?,
-        DT_CADASTRO = ?,
+        DT_CADASTRO = ?
         WHERE ID_AGENDA = ?`;
 
         let [resp] = await config.query(sql, [contato.contato, contato.telefone, contato.email, contato.favorito, contato.cadastro, id])
         return resp.affectedRows
 }
 
+export async function Delete(id) {
+    let sql = `DELETE FROM TB_AGENDA
+                    WHERE ID_AGENDA = ?`
+    let [resp] = await config.query(sql, id)
+    
+    return resp.affectedRows
+}

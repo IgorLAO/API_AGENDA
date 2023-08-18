@@ -1,29 +1,48 @@
 import { Router } from "express";
-import { Agenda, BuscarNome, Inserir, BuscarFav, Data, Alterar } from "../repository/agendaRepository.js";
+import { Agenda, BuscarNome, Inserir, BuscarFav, Data, Alterar, Delete } from "../repository/agendaRepository.js";
 
 let server = Router();
 
 server.get('/contato', async (req, resp) =>{
+    try {
     let data = await Agenda()
     resp.send(data)
+        
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
 });
 
 server.post('/contato', async (req, resp) =>{
+    try {
     const add = req.body
     const data = await Inserir(add)
 
     resp.send(data)
+    } catch (err) {
+        erro: err.message
+    }
 })
 
 server.get('/contato/buscar', async (req, resp) => {
-    const { nome } = req.query
-    const data = await BuscarNome(nome)
-    resp.send(data)
+        try {
+        const { nome } = req.query
+        const data = await BuscarNome(nome)
+        resp.send(data)
+    } catch (err) {
+        erro: err.message
+    }
 })
 
 server.get('/contato/favorito', async (req, resp) => {
+    try {
     let data = await BuscarFav()
     resp.send(data)
+    } catch (err) {
+        erro: err.message        
+    }
 })
 
 server.get('/contato/cadastro', async (req, resp) =>{
@@ -34,14 +53,34 @@ server.get('/contato/cadastro', async (req, resp) =>{
 })
 
 server.put('/contato/:id', async (req, resp) => {
-    let addId = req.params
-    let add = req.body
+    try {
+        let addId = req.params.id
+        let add = req.body
+    
+        const resposta = await Alterar(addId, add)
+        if(resposta != 1)
+                throw new Error('O filme não pode ser alterado')
+        else
+        resp.status(204).send()        
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+    
 
-    const resposta = await Alterar(addId, add)
-    if(resposta != 1)
-            throw new Error('O filme não pode ser alterado')
-    else
+})
+
+server.delete('/contato/:id', async(req, resp)=>{
+    try {
+    let addId = req.params.id
+    const resposta = await Delete(addId)
     resp.status(204).send()
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })        
+    }
 })
 
 export default server
