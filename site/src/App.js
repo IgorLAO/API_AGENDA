@@ -48,7 +48,7 @@ function App() {
       setFavorito(false);
       setData('');
 
-      console.log(list);
+      console.log(responsePost.data);
     } catch (error) {
       console.error("Error posting data:", error);
     }
