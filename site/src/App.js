@@ -27,21 +27,33 @@ function App() {
 
   }, []);
 
-  const post = async () =>{
+  const post = async () => {
     const reqBody = {
-      contato: nome,
-      telefone: telefone,
-      email: email,
-      favorito: favorito,
-      cadastro: data
+      contato: `${nome}`,
+      telefone: `${telefone}`,
+      email: `${email}`,
+      favorito: `${favorito}`,
+      cadastro:  `${data}`
     }
-    
-    const responsePost = await axios.post('http://localhost:5000/contato', reqBody);
-    
-    setList([...list, responsePost.data])
 
-    console.log(responsePost.data)
-  } 
+    try {
+      const responsePost = await axios.post('http://localhost:5000/contato', reqBody);
+      // Você pode atualizar a lista após a postagem ser concluída com sucesso
+      setList([...list, responsePost.data]);
+
+      // Limpa os campos após a postagem
+      setNome('');
+      setTelefone('');
+      setEmail('');
+      setFavorito(false);
+      setData('');
+
+      console.log(list);
+    } catch (error) {
+      console.error("Error posting data:", error);
+    }
+  }
+
 
   return (
     <>
