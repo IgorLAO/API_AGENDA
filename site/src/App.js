@@ -54,6 +54,7 @@ function App() {
 
           {list.map((item, index) =>
             <div className='contato' key={index}>
+              
               <h6>{item.NM_CONTATO}</h6>
               <h6>{item.DS_TELEFONE}</h6>
               <h6> {item.DS_EMAIL} </h6>
@@ -74,6 +75,6 @@ function App() {
       </div>
     </>
   );
-}
+} 
 
 export default App;
