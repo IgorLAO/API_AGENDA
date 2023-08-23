@@ -33,8 +33,7 @@ function App() {
       favorito: favorito,
       cadastro: data
     }
-      
-      const responsePost = await axios.post('http://localhost:5000/contato', reqBody)          
+    const responsePost = await axios.post('http://localhost:5000/contato', reqBody);
 
   }
 
@@ -54,7 +53,7 @@ function App() {
 
           {list.map((item, index) =>
             <div className='contato' key={index}>
-              
+
               <h6>{item.NM_CONTATO}</h6>
               <h6>{item.DS_TELEFONE}</h6>
               <h6> {item.DS_EMAIL} </h6>
@@ -62,7 +61,7 @@ function App() {
               <h6> {item.DT_CADASTRO} </h6>
             </div>)}
 
-      
+
         </div>
       </div>
       <div className='inputs'>
@@ -75,6 +74,6 @@ function App() {
       </div>
     </>
   );
-} 
+}
 
 export default App;
