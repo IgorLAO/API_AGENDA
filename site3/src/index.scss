@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@300;400&family=Inter:wght@200;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;900&display=swap');
+
+body {
+  font-family: 'Poppins';
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+
+
+.voltar {
+    margin-top: 40px;
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+}

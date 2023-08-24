@@ -1,0 +1,51 @@
+
+.pagina-home {
+    min-height: 100vh;
+    background-color: #e5e5e5;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    
+
+    .container {
+        box-shadow: 0px 0px 20px 0px #cccccc;
+        background-color: #fff;
+        padding: 50px 100px;
+        margin-top: 200px;
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        nav {
+            display: flex;
+            flex-direction:  column;
+            
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        a {
+            text-align: center;
+            background-color: #000;
+            text-decoration: none;
+            color: #fff;
+            
+            width: 200px;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: .3s;
+        }
+        a:hover {
+            background-color: #414141;
+        }
+        a:active {
+            background-color: #2b2b2b;
+        }
+    }
+}
+
+
